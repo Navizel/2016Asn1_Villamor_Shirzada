@@ -21,7 +21,6 @@ public class Mark_Mansor_Main {
        Welcome();
        UserInfo();
        PassengerType();
-       UserInfo();
     }
     
 
@@ -110,12 +109,10 @@ public class Mark_Mansor_Main {
                 case "Y":                    
                     freqFlyer.PrintTicket();
                     yesOrNo = false;
-                    System.out.println("say hi");
                     break;            
                 case "N":
                     passenger.PrintTicket();
                     yesOrNo = false;
-                    System.out.println("say no");
                     break;            
                 default:
                     System.out.println("Not a valid answer. Try again.");
@@ -127,11 +124,7 @@ public class Mark_Mansor_Main {
     public static void UserInfo() {
         String flightNum, src, dest, fname, lname;
         double fare;
-        int age;
-        
-        System.out.print("Enter the flight number: ");
-        flightNum = input.nextLine();
-        passenger.setFlightNumber(flightNum);
+        int age;        
         
         System.out.print("Enter the source: ");
         src = input.nextLine();

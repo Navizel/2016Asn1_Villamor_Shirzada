@@ -18,13 +18,13 @@ public class Mark_Mansor_FrequentFlyer extends Mark_Mansor_Passenger {
     }
     
     public Mark_Mansor_FrequentFlyer(String flightNum, String src, String dest, double fare, int freqNum, double miles) {
-        super (flightNum, src, dest);
+        super (src, dest);
         this.frequentFlyingNumber = freqNum;
         this.milesCollected = miles;
     }
     
     public Mark_Mansor_FrequentFlyer(String flightNum, String src, String dest, double fare, String fname, String lname, int age, int freqNum, double miles) {
-        super (flightNum, src, dest, fname, lname, age);
+        super (src, dest, fname, lname, age);
         this.frequentFlyingNumber = freqNum;
         this.milesCollected = miles;
     }
