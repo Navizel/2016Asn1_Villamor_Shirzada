@@ -12,7 +12,7 @@ public class Mark_Mansor_Passenger {
     public String source, destination, firstName, lastName;
     public double totalCost;
     Random rand = new Random();
-    public int age, flightFare;
+    public int age, flightFare, year, month,day;
     public final double tax = 1.13;
     public final int min = 1000, max = 4000;
     
@@ -64,6 +64,26 @@ public class Mark_Mansor_Passenger {
     public void setLastName(String lname) {
         this.lastName = lname;
     }
+    public int getYear() {
+        return year;
+    }
+    public int getMonth() {
+        return month;
+    }
+    public int getDay() {
+        return day;
+    }
+    
+     public void setYear(int year) {
+        this.year = year;
+    }
+      public void setMonth(int month) {
+        this.month = month;
+    }
+       public void setDay(int day) {
+        this.day = day;
+    }
+    
     
     public int getAge() {
         return age;
@@ -100,7 +120,8 @@ public class Mark_Mansor_Passenger {
         System.out.println("Destination: " + destination);
         System.out.println("Name: " + firstName + " " + lastName);
         System.out.println("Age: " + age);
+        System.out.println("Date: " +  year + ", "  +  month + ", "  +  day);
         System.out.println("Total Amount: " + cost.format(totalCost()));
-        System.out.println("**************************************");
+        
     }
 }

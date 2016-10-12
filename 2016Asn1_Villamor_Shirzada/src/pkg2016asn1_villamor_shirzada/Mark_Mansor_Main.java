@@ -17,69 +17,35 @@ public class Mark_Mansor_Main {
     //101033956 Villamor Mark Jerome
     //101032087 Mansor Shirzada
     public static void main(String[] args) {
-        check();
        Welcome();
-       UserInfo();
-       PassengerType();
+       PassengerType();   
     }
     
 
-    
-    public static void getDate () {
-        
-        boolean keepGoing = true;
-        while(keepGoing)
-        {
-            Scanner user_date = new Scanner (System.in);
-        
-            int year_data;  
-            System.out.println(" Please enter Year Date! " );
-            year_data = user_date.nextInt();
-
-            int month_data; 
-            System.out.println(" Please enter Month Date! " );
-            month_data = user_date.nextInt();
-
-            int day_data; 
-            System.out.println(" Please enter Day Date! " );
-            day_data = user_date.nextInt();
-
-
-            boolean isDateValid  = datechecker(month_data, day_data, year_data);
-
-            if(isDateValid)
-            {
-                keepGoing = false;
-            }
-            else
-            {
-                keepGoing = true;
-
-            }
-        }
-        
-                
-    }
-    
-      public static boolean datechecker (int enteredMonth, int enteredDay, int enteredYear) 
+      public static boolean DateChecker (int year, int day, int month) 
     {
-       if (enteredYear < Calendar.YEAR )
+        
+        
+       if (year < Calendar.YEAR )
           {
               System.out.println(" Please enter Valid year! " );
               return false; 
           }
-       if (enteredDay < Calendar.DATE )
+       if (day < Calendar.DATE )
           {
               System.out.println(" Please enter Valid day! " );
               return false; 
           }
-       if (enteredMonth < Calendar.MONTH )
+       if (month < Calendar.MONTH )
           {
               System.out.println(" Please enter Valid month! " );
               return false; 
           }
           
           return  true; 
+          
+          
+          
     }
     
     
@@ -105,13 +71,20 @@ public class Mark_Mansor_Main {
         while(yesOrNo) {
             System.out.print("Are you a frequent flyer? (y/n): ");
             userYesOrNo = input.next().toUpperCase();
+            input.nextLine(); //avoid skip
             switch(userYesOrNo) {
-                case "Y":                    
+                case "Y": 
+                    passenger = freqFlyer;
+                    UserInfo();
+                    FrequentFlyerInfo();
                     freqFlyer.PrintTicket();
+                    System.out.println("**************************************");
                     yesOrNo = false;
                     break;            
                 case "N":
+                    UserInfo();
                     passenger.PrintTicket();
+                    System.out.println("**************************************");
                     yesOrNo = false;
                     break;            
                 default:
@@ -121,10 +94,10 @@ public class Mark_Mansor_Main {
         }
     }
     
-    public static void UserInfo() {
+  public static void UserInfo() {
         String flightNum, src, dest, fname, lname;
         double fare;
-        int age;        
+        int day, month, year;
         
         System.out.print("Enter the source: ");
         src = input.nextLine();
@@ -141,14 +114,12 @@ public class Mark_Mansor_Main {
         System.out.print("Enter your last name: ");
         lname = input.nextLine();
         passenger.setLastName(lname);
-    }
-    
-    public static void check() {
+        
         boolean checkAge = true;
         String sage;
         while(checkAge) {
             try {                        
-                System.out.print("Enter your age: ");
+                System.out.print("Enter your age: ");                
                 sage = input.nextLine();
                 int age = Integer.parseInt(sage);
                 if (age < 117 && age > 0) {
@@ -163,7 +134,70 @@ public class Mark_Mansor_Main {
             catch (NumberFormatException e){
                 System.out.println("Please enter a valid age. Try again.");
             }
+        }    
+        
+        boolean keepGoing = true;
+        while(keepGoing)
+        {
+            System.out.print("Please enter Year Date! " );
+            year = input.nextInt();
+
+
+            System.out.print("Please enter Month Date! " );
+            month = input.nextInt();
+
+
+            System.out.print("Please enter Day Date! " );
+            day = input.nextInt();
+
+           if(DateChecker(year, day, month))
+           {
+               passenger.year = year;
+               passenger.day = day;
+               passenger.month = month;
+               
+               keepGoing = false;
+
+           }
+           else
+           {
+               keepGoing = true;
+           } 
+        }
+
+            
+    }
+  
+    public static void FrequentFlyerInfo() {
+        String sfreqNum, smiles;
+        boolean checkFreqNum = true, checkMiles = true;
+        int freqNum;
+        double miles;
+        
+        while (checkFreqNum) {
+            try {            
+                System.out.print("Enter your Frequent Flyer Number: ");
+                sfreqNum = input.nextLine();
+                freqNum = Integer.parseInt(sfreqNum);
+                freqFlyer.setFrequentFlyingNumber(freqNum);
+                checkFreqNum = false;
+            }
+            catch (NumberFormatException e) {
+                System.out.println("Please enter a valid Frequent Flyer Number. Try again.");
+            }
         }
         
+        while (checkMiles) {
+            try {
+                System.out.print("Enter your Total Miles: ");
+                smiles = input.nextLine();
+                miles = Double.parseDouble(smiles);
+                freqFlyer.setMilesCollected(miles);
+                checkMiles = false;
+            }
+            catch (NumberFormatException e) {
+                System.out.println("Please enter a valid value of miles. Try again.");
+            }
+        }
     }
 }

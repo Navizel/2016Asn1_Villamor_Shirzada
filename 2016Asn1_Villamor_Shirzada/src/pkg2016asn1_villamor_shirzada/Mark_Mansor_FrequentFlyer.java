@@ -1,10 +1,6 @@
 
 package pkg2016asn1_villamor_shirzada;
 
-
-
-import java.util.Calendar;
-
 //CRN 14319
 //101033956 Villamor Mark Jerome
 //101032087 Mansor Shirzada
@@ -29,6 +25,7 @@ public class Mark_Mansor_FrequentFlyer extends Mark_Mansor_Passenger {
         this.milesCollected = miles;
     }
     
+    
     public int getFrequentFlyingNumber() {
         return frequentFlyingNumber;
     }
@@ -48,8 +45,8 @@ public class Mark_Mansor_FrequentFlyer extends Mark_Mansor_Passenger {
     
     
     public void PrintTicket() {
-        super.PrintTicket();
-        System.out.println("*Frequent Flyer Number: " + frequentFlyingNumber);
-        System.out.println("*Total Miles: " + milesCollected);
+        System.out.println("Frequent Flyer Number: " + frequentFlyingNumber);
+        System.out.println("Total Miles: " + milesCollected);
+        super.PrintTicket();        
     }
 }
